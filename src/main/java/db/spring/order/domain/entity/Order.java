@@ -1,6 +1,5 @@
 package db.spring.order.domain.entity;
 
-
 import db.spring.customer.domain.entity.Customer;
 import db.spring.order.domain.enums.PaymentMethod;
 import db.spring.order.domain.enums.Status;
@@ -18,7 +17,6 @@ import java.time.Instant;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order {
-
     @Id
     @Column(name = "order_id",  nullable = false, updatable = false,
         columnDefinition = "bigint GENERATED ALWAYS AS IDENTITY")
