@@ -3,6 +3,7 @@ package db.spring.order.domain.entity;
 import db.spring.product.domain.entity.Product;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Check;
 import org.hibernate.annotations.OnDelete;
@@ -14,6 +15,7 @@ import java.math.BigDecimal;
 @Table(name = "order_item"
         ,schema = "jpa"
 )
+@Getter
 @Check(constraints = "quantity > 0")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItem {
@@ -42,5 +44,5 @@ public class OrderItem {
     private Integer quantity;
 
     @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal price;
+    private BigDecimal unitPrice;
 }

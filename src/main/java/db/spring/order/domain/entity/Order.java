@@ -5,6 +5,7 @@ import db.spring.order.domain.enums.PaymentMethod;
 import db.spring.order.domain.enums.Status;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -44,4 +45,12 @@ public class Order {
 
 //    @OneToMany(mappedBy = "order", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
 //    private List<OrderItem> orderItems = new ArrayList<>();
+
+    public Order(String orderCode, Customer customer, Instant orderedAt, Status status, PaymentMethod paymentMethod) {
+        this.orderCode = orderCode;
+        this.customer = customer;
+        this.orderedAt = orderedAt;
+        this.status = status;
+        this.paymentMethod = paymentMethod;
+    }
 }

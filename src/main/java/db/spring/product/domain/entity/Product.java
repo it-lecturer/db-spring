@@ -25,5 +25,5 @@ public class Product {
     private String name;
 
     @Column(nullable = false)
-    private int unit_price;
+    private int unitPrice;
 }
