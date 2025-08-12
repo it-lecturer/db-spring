@@ -28,4 +28,11 @@ public class Product {
 
     @Column(nullable = false)
     private int unitPrice;
+
+    public Product(String sku, String name, int unitPrice) {
+        this.sku = sku;
+        this.name = name;
+        this.unitPrice = unitPrice;
+    }
 }
+
