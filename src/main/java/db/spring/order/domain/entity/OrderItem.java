@@ -45,4 +45,11 @@ public class OrderItem {
 
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal unitPrice;
+
+    public OrderItem(Order order, Product product, Integer quantity, int unitPrice) {
+        this.order = order;
+        this.product = product;
+        this.quantity = quantity;
+        this.unitPrice = BigDecimal.valueOf(unitPrice);
+    }
 }

@@ -2,6 +2,7 @@ package db.spring.product.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Check;
 
@@ -13,6 +14,7 @@ import org.hibernate.annotations.Check;
 })
 @Check(constraints = "unit_price >= 0", name="product_unit_price_check")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

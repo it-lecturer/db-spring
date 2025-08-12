@@ -52,4 +52,3 @@ public class DataInitializer {
         return zdt.toInstant();
     }
 }
-}

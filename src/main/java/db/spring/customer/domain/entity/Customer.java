@@ -2,6 +2,7 @@ package db.spring.customer.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
         , schema = "jpa"
 )
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
