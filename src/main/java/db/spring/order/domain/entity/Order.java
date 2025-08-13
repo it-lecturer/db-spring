@@ -5,7 +5,6 @@ import db.spring.order.domain.enums.PaymentMethod;
 import db.spring.order.domain.enums.Status;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -19,8 +18,10 @@ import java.time.Instant;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order {
     @Id
-    @Column(name = "order_id",  nullable = false, updatable = false,
-        columnDefinition = "bigint GENERATED ALWAYS AS IDENTITY")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "order_id",  nullable = false, updatable = false,
+//            columnDefinition = "bigint GENERATED ALWAYS AS IDENTITY")
+    @Column(name = "order_id",  nullable = false, updatable = false)
     private Long id;
 
     @Column(name = "order_code", nullable = false, columnDefinition = "text")
