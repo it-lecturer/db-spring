@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Check;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -21,6 +22,7 @@ import java.math.BigDecimal;
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_item_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -29,6 +31,7 @@ public class OrderItem {
             nullable = false,
             foreignKey = @ForeignKey(name = "fk_order_item_order_id")
     )
+    @Setter
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Order order;
 
@@ -38,6 +41,7 @@ public class OrderItem {
             nullable = false,
             foreignKey = @ForeignKey(name = "fk_order_item_product_id")
     )
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Product product;
 
     @Column(nullable = false)

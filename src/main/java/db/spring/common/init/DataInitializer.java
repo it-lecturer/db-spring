@@ -52,12 +52,12 @@ public class DataInitializer {
     }
 
     private void seedProducts() {
-        productRepository.save(new Product("SKU-100", "아메리카노", 3500));
-        productRepository.save(new Product("SKU-200", "라떼",       4500));
-        productRepository.save(new Product("SKU-300", "카푸치노",   4300));
-        productRepository.save(new Product("SKU-400", "바닐라라떼", 4800));
-        productRepository.save(new Product("SKU-500", "콜드브루",   5000));
-        productRepository.save(new Product("SKU-600", "레몬티",     3200));
+        productRepository.save(Product.create("SKU-100", "아메리카노", 3500));
+        productRepository.save(Product.create("SKU-200", "라떼",       4500));
+        productRepository.save(Product.create("SKU-300", "카푸치노",   4300));
+        productRepository.save(Product.create("SKU-400", "바닐라라떼", 4800));
+        productRepository.save(Product.create("SKU-500", "콜드브루",   5000));
+        productRepository.save(Product.create("SKU-600", "레몬티",     3200));
     }
 
     private void seedOrdersAndItems() {

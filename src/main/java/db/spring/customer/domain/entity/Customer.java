@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "customer"
@@ -17,9 +18,11 @@ public class Customer {
     @Column(name = "customer_id")
     private Long id;
 
+    @Setter
     private String name;
 
     @Column(unique = true)
+    @Setter
     private String email;
 
     public Customer(String name, String email) {

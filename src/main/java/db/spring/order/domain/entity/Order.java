@@ -7,8 +7,13 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "orders"
@@ -33,6 +38,7 @@ public class Order {
             nullable = false,
             foreignKey = @ForeignKey(name = "fk_orders_customer_id")
     )
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Customer customer;
 
     @Column(name = "ordered_at", nullable = false)
@@ -44,8 +50,9 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
 
-//    @OneToMany(mappedBy = "order", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
-//    private List<OrderItem> orderItems = new ArrayList<>();
+    @OneToMany(mappedBy = "order", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
+    private List<OrderItem> orderItems = new ArrayList<>();
+
 
     public Order(String orderCode, Customer customer, Instant orderedAt, Status status, PaymentMethod paymentMethod) {
         this.orderCode = orderCode;
@@ -53,5 +60,14 @@ public class Order {
         this.orderedAt = orderedAt;
         this.status = status;
         this.paymentMethod = paymentMethod;
+    }
+
+    public Order(Customer customer, PaymentMethod paymentMethod) {
+        this(UUID.randomUUID().toString(), customer, Instant.now(), Status.PENDING, paymentMethod);
+    }
+
+    public void addOrderItem(OrderItem orderItem) {
+        orderItems.add(orderItem);
+        orderItem.setOrder(this);
     }
 }
